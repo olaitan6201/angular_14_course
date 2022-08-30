@@ -1,0 +1,5 @@
+<img class="image" [src]="book.image" [alt]="book.name" width="100">
+<p class="title">{{book.name | uppercase}} by {{book.author | titlecase }}</p>
+<p class="currency">{{ book.amount | currency: "NGN"}}</p>
+
+<button>Add to Cart</button>
