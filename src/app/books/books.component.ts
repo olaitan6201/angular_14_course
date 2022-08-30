@@ -34,11 +34,18 @@ export class BooksComponent implements OnInit {
     },
   ]
 
+  carts : Book[] = [];
+
   showBooks:boolean = true
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addToCart(event: Book):void {
+    console.log(event);
+    
   }
 
 }
