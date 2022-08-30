@@ -1,8 +1,6 @@
 <p>Programming Books List!</p>
-<button (click)="showBooks = !showBooks">Toggle Books</button>
 <ul *ngIf="showBooks; else hidden">
-    <li *ngFor="let book of books; let i = index">
-        <p class="serial">{{i+1}}</p>
+    <li *ngFor="let book of books">
         <img class="image" [src]="book.image" [alt]="book.name" width="100">
         <p class="title">{{book.name | uppercase}} by {{book.author | titlecase }}</p>
         <p class="currency">{{ book.amount | currency: "NGN"}}</p>
