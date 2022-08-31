@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from './book.directive';
+import { BooksService } from './books.service';
 
 @Component({
   selector: 'app-books',
@@ -7,45 +8,20 @@ import { Book } from './book.directive';
   styleUrls: ['./books.component.scss']
 })
 export class BooksComponent implements OnInit {
-  books: Book[] = [
-    {
-      name: "Clean Code",
-      image: "https://m.media-amazon.com/images/I/41SH-SvWPxL._SX260_.jpg",
-      author: "Robbert C. Martins",
-      amount: 700
-    },
-    {
-      name: "The Pragmatic Programmer",
-      image: "https://images-na.ssl-images-amazon.com/images/I/51yaxPX4BFL._SX360_BO1,204,203,200_.jpg",
-      author: "David Thomas",
-      amount: 5500
-    },
-    {
-      name: "Test Driven Development for Embedded C",
-      image: "https://images-na.ssl-images-amazon.com/images/I/51W6W+UOptL._SX415_BO1,204,203,200_.jpg",
-      author: "James W Grenning",
-      amount: 8000
-    },
-    {
-      name: "Software Engineering | Tenth Edition",
-      image: "https://images-na.ssl-images-amazon.com/images/I/511DuL1myZL._SX397_BO1,204,203,200_.jpg",
-      author: "Ian Sommerville",
-      amount: 1580
-    },
-  ]
-
-  carts : Book[] = [];
+  books: Book[] = []
 
   showBooks:boolean = true
 
-  constructor() { }
+  constructor(private booksService: BooksService) { }
 
   ngOnInit(): void {
-  }
-
-  addToCart(event: Book):void {
-    console.log(event);
+    this.books = this.booksService.getBooks()
+    console.log(this.books);
     
   }
+
+  // addToCart(event: Book):void {
+  //   console.log(event);
+  // }
 
 }

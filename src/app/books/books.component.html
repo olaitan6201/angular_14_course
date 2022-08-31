@@ -1,7 +1,8 @@
 <p>Programming Books List!</p>
 <ul *ngIf="showBooks; else hidden">
     <li *ngFor="let book of books">
-        <app-book (onAddCart)="addToCart($event)" [book]="book"></app-book>
+        <!-- <app-book (onAddCart)="addToCart($event)" [book]="book"></app-book> -->
+        <app-book [book]="book"></app-book>
     </li>
 </ul>
 
