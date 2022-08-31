@@ -1,7 +1,7 @@
 <p>Your Carts!</p>
-
-<div *ngIf="carts.length > 0; else nocart">
-    <div *ngFor="let cart of carts">
+{{ getCarts().length }}
+<div *ngIf="getCarts().length > 0; else nocart">
+    <div *ngFor="let cart of getCarts()">
         {{cart.name}}
     </div>
 </div>

@@ -14,7 +14,11 @@ export class CartsComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.carts = this.cartService.get()
+    this.carts = this.getCarts()
+  }
+
+  getCarts() : Book[]{
+    return this.cartService.get()
   }
 
 }
