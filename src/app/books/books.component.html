@@ -1,10 +1,12 @@
 <p>Programming Books List!</p>
-<ul *ngIf="showBooks; else hidden">
-    <li *ngFor="let book of books; let i = index">
-        <!-- <app-book (onAddCart)="addToCart($event)" [book]="book"></app-book> -->
-        <app-book [book]="book"></app-book>
-    </li>
-</ul>
+<div *ngIf="showBooks; else hidden" class="grid gap-4 sm:grid-flow-row md:grid-cols-2">
+    <!-- <ng-container> -->
+        <div *ngFor="let book of books" class="shadow-xl rounded-lg border-2">
+            <!-- <app-book (onAddCart)="addToCart($event)" [book]="book"></app-book> -->
+            <app-book [book]="book"></app-book>
+        </div>
+    <!-- </ng-container> -->
+</div>
 
 <ng-template #hidden>
     <p>Books Hidden!</p>

@@ -1,7 +1,7 @@
 <p>Your Carts!</p>
 <div *ngIf="getCarts().length > 0; else nocart">
     <div *ngFor="let cart of getCarts()">
-        {{cart.name}}
+        <p class="my-4 text-2xl">{{cart.name}}</p>
     </div>
 </div>
 

@@ -1,6 +1,22 @@
-<img class="image" [src]="book.image" [alt]="book.name" width="100">
-<p class="title">{{book.name | uppercase}} by {{book.author | titlecase }}</p>
-<p class="currency">{{ book.amount | currency: "NGN"}}</p>
-
-<button *ngIf="!inCart" (click)="addToCart()">Add to Cart</button>
-<button *ngIf="inCart" (click)="removeFromCart()">Remove from Cart</button>
+<div class="flex text-center p-4">
+    <div class="flex-none">
+        <img class="image" width="80" [src]="book.image" [alt]="book.name">
+    </div>
+    <div class="flex flex-col w-full">
+        <p class="mb-2">{{book.name | titlecase}} by {{book.author | titlecase }}</p>
+        <p class="mb-2">{{ book.amount | currency: "NGN"}}</p>
+        
+        <div class="mb-2">
+            <button 
+                *ngIf="!inCart" 
+                (click)="addToCart()"
+                class="bg-yellow-400 rounded-sm p-2"
+            >Add to Cart</button>
+            <button 
+                *ngIf="inCart" 
+                (click)="removeFromCart()"
+                class="bg-yellow-400 rounded-sm p-2"
+            >Remove from Cart</button>
+        </div>
+    </div>
+</div>
