@@ -10,6 +10,8 @@ import { Book } from '../book.directive';
 export class BookComponent implements OnInit {
   @Input() book: Book = {} as Book;
   // @Output() onAddCart = new EventEmitter<Book>()
+  inCart = false;
+
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
@@ -17,6 +19,12 @@ export class BookComponent implements OnInit {
 
   addToCart() : void {
     this.cartService.add(this.book)
+    this.inCart = true
     // this.onAddCart.emit(this.book)
+  }
+
+  removeFromCart() : void {
+    this.cartService.remove(this.book)
+    this.inCart = false
   }
 }

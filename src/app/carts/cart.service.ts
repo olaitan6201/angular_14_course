@@ -16,4 +16,8 @@ export class CartService {
   get() : Book[]{
     return this.carts.slice()
   }
+
+  remove(book: Book) : void {
+    this.carts = this.carts.filter((cart) => cart !== book)
+  }
 }

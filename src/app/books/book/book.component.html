@@ -2,4 +2,5 @@
 <p class="title">{{book.name | uppercase}} by {{book.author | titlecase }}</p>
 <p class="currency">{{ book.amount | currency: "NGN"}}</p>
 
-<button (click)="addToCart()">Add to Cart</button>
+<button *ngIf="!inCart" (click)="addToCart()">Add to Cart</button>
+<button *ngIf="inCart" (click)="removeFromCart()">Remove from Cart</button>

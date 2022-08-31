@@ -1,5 +1,4 @@
 <p>Your Carts!</p>
-{{ getCarts().length }}
 <div *ngIf="getCarts().length > 0; else nocart">
     <div *ngFor="let cart of getCarts()">
         {{cart.name}}
