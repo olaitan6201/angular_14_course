@@ -1,0 +1,12 @@
+<p>Your Carts!</p>
+
+<div *ngIf="carts.length > 0; else nocart">
+    <div *ngFor="let cart of carts">
+        {{cart.name}}
+    </div>
+</div>
+
+
+<ng-template #nocart>
+    <p>No carts available!</p>
+</ng-template>
