@@ -1,20 +1,54 @@
 <div class="flex justify-center">
-    <form action="" class="p-4 rounded-lg border m-auto w-1/3">
+    <form (ngSubmit)="onSubmit()" class="p-4 rounded-lg border m-auto w-1/3" [formGroup]="registerForm">
         <h1 class="text-center text-xl">Register</h1>
         <div class="my-5">
             <label for="email">Email:</label>
-            <input type="email" id="email" class="p-2 rounded w-full border" placeholder="Email Address">
+            <input 
+                type="email" id="email" 
+                class="p-2 rounded w-full border" placeholder="Email Address" 
+                formControlName="email" 
+            />
+            <small 
+                class="error" 
+                *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched"
+            >
+                {{ fieldStatusText(registerForm.get('email')) }}
+            </small>
         </div>
         <div class="my-5">
             <label for="password">Password:</label>
-            <input type="password" id="password" class="p-2 rounded w-full border" placeholder="Password">
+            <input 
+                type="password" id="password" 
+                class="p-2 rounded w-full border" placeholder="Password" 
+                formControlName="password" 
+            />
+            <small 
+                class="error" 
+                *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched"
+            >
+                {{ fieldStatusText(registerForm.get('password')) }}
+            </small>
         </div>
         <div class="my-5">
             <label for="password_confirmation">Confirm Password:</label>
-            <input type="password" id="password_confirmation" class="p-2 rounded w-full border" placeholder="Password">
+            <input 
+                type="password" id="password_confirmation" 
+                class="p-2 rounded w-full border" placeholder="Password" 
+                formControlName="password_confirmation" 
+            />
+            <small 
+                class="error" 
+                *ngIf="!registerForm.get('password_confirmation')?.valid && registerForm.get('password_confirmation')?.touched"
+            >
+                {{ fieldStatusText(registerForm.get('password_confirmation')) }}
+            </small>
         </div>
         <div class="my-5">
-            <input type="submit" id="password" class="p-2 rounded w-full bg-yellow-700 hover:bg-yellow-900">
+            <input 
+                type="submit" id="password" 
+                class="p-2 rounded w-full bg-yellow-700 hover:bg-yellow-900"
+                [disabled]="!registerForm.valid || false"
+            />
         </div>
     </form>
 </div>
