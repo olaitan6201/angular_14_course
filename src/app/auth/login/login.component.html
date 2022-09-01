@@ -26,10 +26,13 @@
             >This field is invalid</small>
         </div>
         <div class="my-5">
-            <input 
+            <button 
                 type="submit" 
                 [disabled]="!loginForm.valid"
-                class="p-2 rounded w-full bg-purple-700 hover:bg-purple-900">
+                class="p-2 rounded w-full bg-purple-700 hover:bg-purple-900"
+            >
+                {{ isLoading ? 'Loading . . .' : 'Submit'}}
+            </button>
         </div>
     </form>
 </div>
