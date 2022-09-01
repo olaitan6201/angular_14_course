@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { createUser } from 'src/app/firebase/auth.firebase';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,8 @@ export class RegisterComponent implements OnInit {
     password: new FormControl(null, Validators.required),
     password_confirmation: new FormControl(null, Validators.required)
   })
+
+  isLoading: boolean = false
   
   constructor() { }
   
@@ -24,12 +27,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.registerForm);
-    
     const { email, password, password_confirmation } = this.registerForm.value 
     if(password !== password_confirmation) return alert('Password confirmation field incorrect');
-
-    //do something
+    this.isLoading = true
+    
+    createUser(email, password).then((res: any) => {
+      if(res) console.log(res);
+    })
+    .finally(() => this.isLoading = false)
   }
 
   fieldStatusText(field: any): string{
