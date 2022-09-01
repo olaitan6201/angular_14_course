@@ -2,7 +2,8 @@ import "./firebase.config"
 import { 
     createUserWithEmailAndPassword, 
     getAuth, 
-    signInWithEmailAndPassword 
+    signInWithEmailAndPassword, 
+    signOut
 } from "firebase/auth";
 
 const auth = getAuth();
@@ -14,7 +15,8 @@ export const signIn = async (email: string, password: string) => {
     } catch (error) {
         // const errorCode = error.code;
         // const errorMessage = error.message;
-        console.log(error);
+        // console.log(error);
+        alert('Credentials does not match')
         return null
     }
 };
@@ -27,7 +29,17 @@ export const createUser = async (email: string, password: string) => {
     } catch (error) {
         // const errorCode = error.code;
         // const errorMessage = error.message;
-        console.log(error);
+        // console.log(error);
+        alert('Unable to register user')
         return null
+    }
+}
+
+export const userLogOut = async () => {
+    try {
+        let res = await signOut(auth)
+        return true
+    } catch (error) {
+        return false
     }
 }

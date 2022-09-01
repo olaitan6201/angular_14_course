@@ -9,7 +9,7 @@
         </ng-container>
         <ng-template #authenticated>
             <a class="mx-4" routerLink="/carts">My Carts</a>
-            <a class="mx-4" routerLink="/">Logout</a>
+            <a class="mx-4" (click)="logOut()">Logout</a>
         </ng-template>
     </div>
 </nav>

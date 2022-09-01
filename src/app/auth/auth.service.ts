@@ -1,4 +1,4 @@
-import { signIn, createUser } from './../firebase/auth.firebase';
+import { signIn, createUser, userLogOut } from './../firebase/auth.firebase';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -37,6 +37,15 @@ export class AuthService {
       }
     })
     .finally(() => this.isLoading = false)
+  }
+
+  logOut() : void{
+    userLogOut().then((res:any)=>{
+      if(res) {
+        this.isAuthenticated = false
+        this.router.navigate(['/login'])
+      }
+    })
   }
 
 }
