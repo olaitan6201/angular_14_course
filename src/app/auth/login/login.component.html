@@ -31,7 +31,7 @@
                 [disabled]="!loginForm.valid"
                 class="p-2 rounded w-full bg-purple-700 hover:bg-purple-900"
             >
-                {{ isLoading ? 'Loading . . .' : 'Submit'}}
+                {{ isLoading() ? 'Loading . . .' : 'Submit'}}
             </button>
         </div>
     </form>

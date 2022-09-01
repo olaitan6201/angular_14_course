@@ -49,8 +49,8 @@
                 class="p-2 rounded w-full bg-yellow-700 hover:bg-yellow-900"
                 [disabled]="!registerForm.valid || false"
             >
-                {{ isLoading ? 'Loading . . .' : 'Submit' }}
+                {{ isLoading() ? 'Loading . . .' : 'Submit' }}
             </button>
-        </div>
+        </div>)
     </form>
 </div>

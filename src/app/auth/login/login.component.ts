@@ -1,6 +1,6 @@
+import { AuthService } from './../auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { signIn } from 'src/app/firebase/auth.firebase';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +12,8 @@ export class LoginComponent implements OnInit {
     email: new FormControl(null, [Validators.email, Validators.required]),
     password: new FormControl(null, Validators.required)
   })
-
-  isLoading: boolean = false
   
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -26,11 +24,11 @@ export class LoginComponent implements OnInit {
 
   submit() : void {
     const { email, password} = this.loginForm.value
-    this.isLoading = true
+    this.authService.signIn(email, password)
+  }
 
-    signIn(email, password).then((res: any) => res && console.log(res))
-    .finally(()  => this.isLoading = false )
-    
+  isLoading() : boolean{
+    return this.authService.isLoading
   }
 
 }

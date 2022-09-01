@@ -1,6 +1,6 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { createUser } from 'src/app/firebase/auth.firebase';
 
 @Component({
   selector: 'app-register',
@@ -13,10 +13,8 @@ export class RegisterComponent implements OnInit {
     password: new FormControl(null, Validators.required),
     password_confirmation: new FormControl(null, Validators.required)
   })
-
-  isLoading: boolean = false
   
-  constructor() { }
+  constructor(private authService: AuthService) { }
   
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -29,12 +27,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     const { email, password, password_confirmation } = this.registerForm.value 
     if(password !== password_confirmation) return alert('Password confirmation field incorrect');
-    this.isLoading = true
-    
-    createUser(email, password).then((res: any) => {
-      if(res) console.log(res);
-    })
-    .finally(() => this.isLoading = false)
+    this.authService.register(email, password)
   }
 
   fieldStatusText(field: any): string{
@@ -44,6 +37,10 @@ export class RegisterComponent implements OnInit {
       return "The input value is invalid"
     }
     return ""
+  }
+
+  isLoading() : boolean{
+    return this.authService.isLoading
   }
 
 }
