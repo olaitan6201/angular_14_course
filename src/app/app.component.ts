@@ -1,3 +1,4 @@
+import { AuthService } from './auth/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular_14_course';
+
+  constructor(private authService: AuthService) {}
+
+  isAuthenticated() : boolean {
+    return this.authService.isAuthenticated
+  }
 }
