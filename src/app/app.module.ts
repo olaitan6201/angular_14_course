@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,8 +15,9 @@ import { CartsComponent } from './carts/carts.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AuthModule,
 
-    BooksModule
+    BooksModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
